@@ -1,0 +1,12 @@
+﻿{
+  "profiles": {
+    "EQUTech.JokerBoard.Web": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://*:8000"
+      }
+    }
+  }
+}

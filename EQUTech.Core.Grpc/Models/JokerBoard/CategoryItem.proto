@@ -1,0 +1,13 @@
+syntax = "proto3";
+package EQUTech.Core.Grpc.Models.JokerBoard;
+
+message CategoryItem {
+	int64 Id = 1;
+	optional int64 Pid = 2;
+	string Name = 3;
+	CategoryItems Categories = 4;
+}
+
+message CategoryItems {
+	repeated CategoryItem List = 1;
+}

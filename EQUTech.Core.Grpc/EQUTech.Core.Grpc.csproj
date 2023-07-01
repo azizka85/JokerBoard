@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.54.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="**\*.proto" AdditionalImportDirs="." />
+  </ItemGroup>
+  
+</Project>

@@ -1,0 +1,19 @@
+syntax = "proto3";
+package EQUTech.Core.Grpc.Services.JokerBoard.Category;
+
+import "google/protobuf/empty.proto";
+
+import "Models/JokerBoard/CategoryItem.proto";
+
+service Service {
+	rpc List(google.protobuf.Empty) returns (stream ListResponse);
+}
+
+message ListResponse {
+	oneof Message {
+		Models.JokerBoard.CategoryItems Data = 1;
+		Models.JokerBoard.CategoryItem Create = 2;
+		Models.JokerBoard.CategoryItem Update = 3;
+		Models.JokerBoard.CategoryItem Remove = 4;
+	}
+}

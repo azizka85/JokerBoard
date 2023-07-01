@@ -1,0 +1,29 @@
+﻿<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+  xsi:schemaLocation="
+    http://www.liquibase.org/xml/ns/dbchangelog 
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+    http://www.liquibase.org/xml/ns/pro 
+    http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd
+  "
+>
+  <changeSet author="Aziz Kudaikulov" id="create-table-1">
+    <createTable tableName="categories">
+      <column name="id" type="bigint" autoIncrement="true">
+        <constraints primaryKey="true" primaryKeyName="categories_pkey"/>
+      </column>
+      <column name="pid" type="bigint">
+        <constraints foreignKeyName="categories_pid_fk" referencedColumnNames="id" referencedTableName="categories" />
+      </column>
+      <column name="name" type="text">
+        <constraints nullable="false" />
+      </column>
+      <column name="description" type="text" />
+      <column name="deleted" type="bool" defaultValue="false">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+  </changeSet>
+</databaseChangeLog>
