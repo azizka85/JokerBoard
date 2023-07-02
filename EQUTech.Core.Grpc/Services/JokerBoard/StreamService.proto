@@ -1,12 +1,21 @@
 syntax = "proto3";
 package EQUTech.Core.Grpc.Services.JokerBoard.Stream;
 
-import "google/protobuf/empty.proto";
+import "google/protobuf/any.proto";
 
 import "Models/JokerBoard/CategoryItem.proto";
 
 service Service {
-	rpc Call(google.protobuf.Empty) returns (stream CallResponse);
+	rpc Call(CallRequest) returns (stream CallResponse);
+}
+
+enum StreamActions {
+	Home = 0;
+}
+
+message CallRequest {
+	StreamActions Action = 1;
+	google.protobuf.Any Data = 2;
 }
 
 message CallResponse {

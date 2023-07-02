@@ -14,7 +14,7 @@ public sealed class CategoryItemService : ICategoryItemService
         _categoryItemRepository = categoryItemRepository ?? throw new ArgumentNullException(nameof(categoryItemRepository));
     }
 
-    public List<CategoryItem> List()
+    public CategoryItems List()
     {
         using var connection = _categoryItemRepository.DataSource.OpenConnection();
 

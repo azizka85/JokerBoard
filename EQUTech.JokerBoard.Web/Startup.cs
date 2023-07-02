@@ -1,10 +1,13 @@
 ﻿using EQUTech.Core.Services.JokerBoard;
+using EQUTech.Core.Tasks;
 using EQUTech.JokerBoard.Data;
 using EQUTech.JokerBoard.Data.PostgreSQL;
 using EQUTech.JokerBoard.Services;
+using EQUTech.JokerBoard.Web.GrpcServices;
+using EQUTech.JokerBoard.Web.Stream;
 using Microsoft.Extensions.Caching.Memory;
 using Npgsql;
-using System.Text.Json.Serialization;
+using System.IO.Compression;
 using CategoryItemServiceCache = EQUTech.Core.Services.Cache.JokerBoard.CategoryItemService;
 
 namespace EQUTech.JokerBoard.Web;
@@ -40,12 +43,26 @@ public sealed class Startup
         );
         services.AddSingleton<ICategoryItemService>(options => options.GetRequiredService<CategoryItemServiceCache>());
 
-        services
-            .AddControllers()
-            .AddJsonOptions(options =>
-            {
-                options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-            });
+        services.AddSingleton<StreamManager>();
+        services.AddSingleton<StreamHandler>();
+
+        services.AddHostedService
+        (
+            options => new PingTask
+            (
+                _configuration.GetValue<TimeSpan>("PingDelay"),
+                new()
+                {
+                    options.GetRequiredService<StreamHandler>()
+                },
+                options.GetRequiredService<ILogger<PingTask>>()
+            )
+        );
+
+        services.AddGrpc(options =>
+        {
+            options.ResponseCompressionLevel = CompressionLevel.Optimal;
+        });
     }
 
     public void Configure(IApplicationBuilder app)
@@ -54,7 +71,7 @@ public sealed class Startup
 
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapControllers();
+            endpoints.MapGrpcService<StreamService>();
         });
     }
 

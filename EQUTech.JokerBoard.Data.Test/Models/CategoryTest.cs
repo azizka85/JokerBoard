@@ -43,15 +43,15 @@ public class CategoryTest
 
         var result = Category.ToCategoryItemTree(list);
 
-        Assert.AreEqual(1, result.Count);
+        Assert.AreEqual(1, result.List.Count);
 
-        Assert.AreEqual(list[0].Id, result[0].Id);
-        Assert.AreEqual(list[0].Name, result[0].Name);
+        Assert.AreEqual(list[0].Id, result.List[0].Id);
+        Assert.AreEqual(list[0].Name, result.List[0].Name);
 
-        Assert.IsNotNull(result[0].Categories);
-        Assert.AreEqual(1, result[0].Categories?.List.Count);
+        Assert.IsNotNull(result.List[0].Categories);
+        Assert.AreEqual(1, result.List[0].Categories?.List.Count);
 
-        Assert.AreEqual(list[1].Id, result[0].Categories?.List[0].Id);
-        Assert.AreEqual(list[1].Name, result[0].Categories?.List[0].Name);
+        Assert.AreEqual(list[1].Id, result.List[0].Categories?.List[0].Id);
+        Assert.AreEqual(list[1].Name, result.List[0].Categories?.List[0].Name);
     }
 }

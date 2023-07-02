@@ -22,16 +22,4 @@ public sealed class CategoryTest
 
         _client = _server.CreateClient();
     }
-
-    [TestMethod]
-    public void List()
-    {
-        var response = _client.GetAsync("/category/list").Result;
-
-        response.EnsureSuccessStatusCode();
-
-        var result = response.Content.ReadFromJsonAsync<List<CategoryItem>>().Result;
-
-        Assert.IsNotNull(result);
-    }
 }

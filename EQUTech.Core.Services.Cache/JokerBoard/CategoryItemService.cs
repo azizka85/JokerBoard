@@ -23,11 +23,11 @@ public sealed class CategoryItemService : ICategoryItemService
         _cacheLifeTime = cacheLifeTime;
     }
 
-    public List<CategoryItem> List()
+    public CategoryItems List()
     {
         if (_memoryCache.TryGetValue(_cacheKey, out var cachedValue))
         {
-            return (List<CategoryItem>)cachedValue!;
+            return (CategoryItems)cachedValue!;
         }
 
         var data = _categoryItemService.List();

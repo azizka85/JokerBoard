@@ -28,13 +28,13 @@ public class Category
         return item;
     }
 
-    public static List<CategoryItem> ToCategoryItemTree(List<Category> list)
+    public static CategoryItems ToCategoryItemTree(List<Category> list)
     {
         var data = list
             .Select(item => item.ToCategoryItem())
             .ToDictionary(item => item.Id);
 
-        var res = new List<CategoryItem>();
+        var res = new CategoryItems();
 
         foreach (var item in list)
         {
@@ -51,7 +51,7 @@ public class Category
             }
             else
             {
-                res.Add
+                res.List.Add
                 (
                     data[item.Id]
                 );

@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EQUTech.Core.Services.Cache\EQUTech.Core.Services.Cache.csproj" />
+    <ProjectReference Include="..\EQUTech.Core.Tasks\EQUTech.Core.Tasks.csproj" />
+    <ProjectReference Include="..\EQUTech.Core.Utils\EQUTech.Core.Utils.csproj" />
     <ProjectReference Include="..\EQUTech.JokerBoard.Data.PostgreSQL\EQUTech.JokerBoard.Data.PostgreSQL.csproj" />
     <ProjectReference Include="..\EQUTech.JokerBoard.Services\EQUTech.JokerBoard.Services.csproj" />
   </ItemGroup>

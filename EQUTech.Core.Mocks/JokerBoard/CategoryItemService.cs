@@ -5,15 +5,19 @@ namespace EQUTech.Core.Mocks.JokerBoard;
 
 public sealed class CategoryItemService : ICategoryItemService
 {
-    public List<CategoryItem> List()
+    public CategoryItems List()
     {
-        return new()
+        var data = new CategoryItems();
+
+        data.List.Add
+        (
+            new CategoryItem
             {
-                new CategoryItem
-                {
-                    Id = 1,
-                    Name = "Test1",
-                }
-            };
+                Id = 1,
+                Name = "Test1",
+            }
+        );
+
+        return data;
     }
 }

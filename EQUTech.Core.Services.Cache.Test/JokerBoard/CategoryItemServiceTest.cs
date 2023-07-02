@@ -30,9 +30,9 @@ public class CategoryItemServiceTest
 
         Assert.IsNotNull(result);
 
-        Assert.AreEqual(list.Count, result.Count);
-        Assert.AreEqual(list[0].Id, result[0].Id);
-        Assert.AreEqual(list[0].Name, result[0].Name);
+        Assert.AreEqual(list.List.Count, result.List.Count);
+        Assert.AreEqual(list.List[0].Id, result.List[0].Id);
+        Assert.AreEqual(list.List[0].Name, result.List[0].Name);
 
     }
 }

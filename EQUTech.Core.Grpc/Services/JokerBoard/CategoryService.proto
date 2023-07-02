@@ -1,7 +1,0 @@
-syntax = "proto3";
-package EQUTech.Core.Grpc.Services.JokerBoard.Category;
-
-
-service Service {
-	
-}
