@@ -13,5 +13,9 @@
   <ItemGroup>
     <Protobuf Include="**\*.proto" AdditionalImportDirs="." />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="services\jokerboard\StreamService.proto" />
+  </ItemGroup>
   
 </Project>

@@ -1,6 +1,6 @@
 ﻿using EQUTech.Core.Grpc.Models.JokerBoard;
 using EQUTech.Core.Mocks.JokerBoard;
-using EQUTech.JokerBoard.Web.Controllers;
+using EQUTech.JokerBoard.Web.GrpcServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EQUTech.JokerBoard.Web.Test.Controllers;
@@ -12,7 +12,7 @@ public class CategoryControllerTest
     public void List()
     {
         var service = new CategoryItemService();
-        var controller = new CategoryController(service);
+        var controller = new CategoryService(service);
 
         var list = service.List();
         var result = controller.List();
